@@ -9,5 +9,9 @@ String value;
         return value;
     }
 
+    public void getShapeValue (Shape shape){
+        System.out.println("shape = " + shape.getValue());
+    }
+
 
 }

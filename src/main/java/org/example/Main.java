@@ -8,5 +8,6 @@ public class Main {
         System.out.println("shape = " + shape.getValue());
         Oval oval = new Oval("овальчик");
         System.out.println("oval=" + oval.getValue());
+
     }
 }

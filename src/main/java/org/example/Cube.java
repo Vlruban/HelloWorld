@@ -1,7 +1,14 @@
 package org.example;
 
 public class Cube extends Shape{
-    Cube (String value){
-        super(value);
+
+    Cube(String name) {
+        super(name);
+    }
+
+    @Override
+    public void getName() {
+        super.getName();
     }
 }
+

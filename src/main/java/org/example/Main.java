@@ -18,6 +18,9 @@ public class Main {
         System.out.println("myArrayLists size = " +  myArrayLists.size());
         myArrayLists.clear();
         System.out.println("myArrayLists size = " +  myArrayLists.size());
+        // __________________________________________________________________
+        MyHashMap <Integer,String> obj = new MyHashMap<>();
+        System.out.println("MyHashMapObj size = " +obj.size());
 
 
 

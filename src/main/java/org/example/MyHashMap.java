@@ -4,58 +4,71 @@ import java.util.Arrays;
 import java.util.HashMap;
 
 public class MyHashMap<K, V> {
-    private MyHashMap map[] = new MyHashMap[0];
+    static class Node<K, V> {
+        K key;
+        V value;
+        Node<K, V> node;
 
-
-    public void put(Object key, Object value) {
-        if (Arrays.asList(map).contains(key)) {
-            System.out.println("Данный ключ уже использует");
-        } else {
-            map = Arrays.copyOf(map, map.length + 2);
-            map[map.length - 2] = (MyHashMap) key;
-            map[map.length - 1] = (MyHashMap) value;
+        public Node(K key, V value) {
+            this.key = key;
+            this.value = value;
         }
     }
 
-    public void remove(Object key) {
-        if (!Arrays.asList(map).contains(key)) {
-            System.out.println("Данный ключ не найден");
-        } else {
-            int indexKey = 0;
-            MyHashMap[] temp = new MyHashMap[map.length - 2];
-            for (Object o : map) {
-                if (o == key) {
-                    break;
-                }
-                indexKey++;
-            }
-            for (int i = 0; i < map.length; i++) {
-                if (indexKey != i && indexKey + 1 != i) {
-                    temp[i] = map[i];
-                }
-            }
-            map = Arrays.copyOf(temp, temp.length);
+    Node[] array;
+    int size = 0;
+
+
+    public void put(K key, V value) {
+        if (key == null) {
+            throw new IndexOutOfBoundsException("Значение ключя не может быть null");
         }
+        for (int i = 0; i < size; i++) {
+            if (array[0] == key) {
+                throw new IndexOutOfBoundsException("Значение ключ занято");
+            }
+        }
+        Node<K, V> node = new MyHashMap.Node(key, value);
+        size++;
+        array[0] = (Node) key;
+        array[1] = (Node) value;
     }
 
     public void clear() {
-        map = Arrays.copyOf(map, 0);
+        size = 0;
+        array = null;
     }
 
     public int size() {
-        return map.length / 2;
+        return size;
     }
 
-    public MyHashMap get(Object key) {
-        int indexKey = 0;
-        for (Object o : map) {
-            if (o == key) {
+    public V get(K key) {
+        for (int i = 0; i < size; i++) {
+            if (key == null || key != array[0]) {
+                throw new IllegalArgumentException("Ключ не обнаружен");
+            }
+            if (key == array[0]) {
                 break;
             }
-            indexKey++;
         }
-        return map[indexKey + 1];
+        return (V) array[1];
     }
+
+    public void remove(K key) {
+        int j = 0;
+        for (int i = 0; i < size; i++) {
+            if (key == null || key != array[0]) {
+                throw new IllegalArgumentException("Ключ не обнаружен");
+            } else {
+                if (key == array[0]) {
+                    break;
+                }
+                array = null;
+            }
+        }
+    }
+}
 
 
 //    Написать свой класс MyHashMap как аналог классу HashMap.
@@ -73,4 +86,4 @@ public class MyHashMap<K, V> {
 //    get(Object key) возвращает значение(Object value) по ключу
 
 
-}
+

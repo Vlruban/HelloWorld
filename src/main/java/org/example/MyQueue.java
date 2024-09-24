@@ -4,11 +4,11 @@ import java.util.Arrays;
 
 public class MyQueue<V> {
 
-    private MyQueue[] queues = new MyQueue[0];
+    private V[] queues = (V[]) new Object[0];
 
-    public void add(Object value) {
+    public void add(V value) {
         queues = Arrays.copyOf(queues, queues.length + 1);
-        queues[queues.length - 1] = (MyQueue) value;
+        queues[queues.length - 1] = (V) value;
     }
 
     public void clear() {
@@ -19,27 +19,26 @@ public class MyQueue<V> {
         return queues.length;
     }
 
-    public MyQueue peek() {
+    public V peek() {
         if (queues == null) {
-            System.out.println("В массиве нет элементов");
-            return null;
+            throw new IndexOutOfBoundsException("В массиве нет элементов");
         } else {
             return queues[0];
         }
     }
 
-    public MyQueue pool() {
-        if (queues == null) {
-            System.out.println("В массиве нет элементов");
-            return null;
+
+    public V pool() {
+        if (queues.length==0){
+            throw new IndexOutOfBoundsException("В массиве нет элементов");
         } else {
-            MyQueue[] answer = Arrays.copyOf(queues, 1);
-            MyQueue[] temp = new MyQueue[queues.length - 1];
+            V[] answer = Arrays.copyOf(queues, 1);
+            V[] temp = ( V []) new Object[queues.length - 1];
             for (int i = 1; i < queues.length; i++) {
                 temp[i - 1] = queues[i];
             }
             queues = Arrays.copyOf(temp, temp.length);
-            return answer[0];
+            return  answer[0];
         }
     }
 

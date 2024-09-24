@@ -4,16 +4,19 @@ import java.sql.Array;
 import java.util.ArrayList;
 import java.util.Arrays;
 
-public class MyArrayList {
+public class MyArrayList <V>{
 
-    private MyArrayList[] array = new MyArrayList[0];
+    private V[] array = (V[]) new Object[0];
 
-    public void add(Object value) {
+    public void add(V value) {
         array = Arrays.copyOf(array, array.length + 1);
-        array[array.length - 1] = (MyArrayList) value;
+        array[array.length - 1] = (V) value;
     }
 
     public void remove(int index) {
+        if (index>=array.length){
+            throw new IndexOutOfBoundsException("Элемент под номером"+index+ "отсутствует");
+        }
         array = Arrays.copyOf(array, array.length - 1);
     }
 
@@ -25,7 +28,10 @@ public class MyArrayList {
         return array.length;
     }
 
-    public MyArrayList get(int index) {
+    public V get(int index) {
+        if (index>=array.length){
+            throw new IndexOutOfBoundsException("Элемент под номером"+index+ "отсутствует");
+        }
         return array[index];
     }
 }

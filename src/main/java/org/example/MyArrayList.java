@@ -32,7 +32,10 @@ public class MyArrayList <V>{
         if (index>=array.length){
             throw new IndexOutOfBoundsException("Элемент под номером"+index+ "отсутствует");
         }
-        return array[index];
+        return (V) array[index].toString();
+    }
+    public String toString(){
+        return ""+array;
     }
 }
 

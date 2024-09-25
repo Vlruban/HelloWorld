@@ -44,7 +44,7 @@ public class MyLinkedList<V> {
         return size;
     }
 
-    public Node get(int index) {
+    public V get(int index) {
         if (index < 0 || index >= size) {
             throw new IndexOutOfBoundsException("Не верный индекс");
         }
@@ -52,7 +52,7 @@ public class MyLinkedList<V> {
         for (int i = 0; i < index; i++) {
             current = current.next;
         }
-        return current;
+        return (V) current.value;
     }
 
 
@@ -73,6 +73,7 @@ public class MyLinkedList<V> {
         }
 
     }
+
 }
 
 

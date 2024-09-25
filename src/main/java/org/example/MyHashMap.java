@@ -1,13 +1,9 @@
 package org.example;
 
-import java.util.Arrays;
-import java.util.HashMap;
-
-public class MyHashMap<K, V> {
-    static class Node<K, V> {
+class MyHashMap<K, V> {
+    class Node<K, V> {
         K key;
         V value;
-        Node<K, V> node;
 
         public Node(K key, V value) {
             this.key = key;
@@ -15,28 +11,37 @@ public class MyHashMap<K, V> {
         }
     }
 
-    Node[] array;
+    Node[] array = new Node[10];
+    int maxSize = 10;
     int size = 0;
 
 
     public void put(K key, V value) {
         if (key == null) {
-            throw new IndexOutOfBoundsException("Значение ключя не может быть null");
+            throw new IllegalArgumentException("Значение ключя не может быть null");
         }
-        for (int i = 0; i < size; i++) {
-            if (array[0] == key) {
-                throw new IndexOutOfBoundsException("Значение ключ занято");
+        Node<K, V> node = new Node(key, value);
+        if (array[node.key.hashCode() % array.length] != null) {
+            throw new IllegalArgumentException("Key is used more than once");
+        }
+        array[node.key.hashCode() % array.length] = node;
+        size++;
+        increaseSizeOfArrayIfNeed();
+    }
+
+    private void increaseSizeOfArrayIfNeed() {
+        if (size == maxSize) {
+            Node[] newArray = new Node[array.length * 2];
+            maxSize *= 2;
+            for (Node item : array) {
+                newArray[maxSize % item.key.hashCode()] = item;
             }
         }
-        Node<K, V> node = new MyHashMap.Node(key, value);
-        size++;
-        array[0] = (Node) key;
-        array[1] = (Node) value;
     }
 
     public void clear() {
         size = 0;
-        array = null;
+        array = new Node[10];
     }
 
     public int size() {
@@ -45,45 +50,30 @@ public class MyHashMap<K, V> {
 
     public V get(K key) {
         for (int i = 0; i < size; i++) {
-            if (key == null || key != array[0]) {
-                throw new IllegalArgumentException("Ключ не обнаружен");
+            if (array[i] == null) {
+                continue;
             }
-            if (key == array[0]) {
-                break;
+            if (key.equals(array[i].key)) {
+                return (V) array[i].value;
             }
         }
-        return (V) array[1];
+        return null;
     }
 
     public void remove(K key) {
-        int j = 0;
+        if (key == null) {
+            throw new IllegalArgumentException("Key is null");
+        }
         for (int i = 0; i < size; i++) {
-            if (key == null || key != array[0]) {
-                throw new IllegalArgumentException("Ключ не обнаружен");
-            } else {
-                if (key == array[0]) {
-                    break;
-                }
-                array = null;
+            if (array[i] == null) {
+                continue;
+            }
+
+
+            if (key.equals(array[i].key)) {
+                array[i] = null;
+                break;
             }
         }
     }
 }
-
-
-//    Написать свой класс MyHashMap как аналог классу HashMap.
-//
-//    Нужно делать с помощью односвязной Node.
-//
-//    Не может хранить две ноды с одинаковых ключами одновременно.
-//
-//            Методы
-//
-//    put(Object key, Object value) добавляет пару ключ + значение
-//    remove(Object key) удаляет пару по ключу
-//    clear() очищает коллекцию
-//    size() возвращает размер коллекции
-//    get(Object key) возвращает значение(Object value) по ключу
-
-
-

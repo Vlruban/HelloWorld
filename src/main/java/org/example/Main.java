@@ -44,31 +44,17 @@ public class Main {
         System.out.println("Test MyLinkedList completed");
         System.out.println("___________________________");
         // __________________________________________________________________
-        HashMap <Integer,String> map = new HashMap<>();
-        map.put(22,"First");
-        System.out.println(map.size());
-        map.put(1,"Second");
-        System.out.println(map.size());
-        System.out.println(map.get(1));
-        map.clear();
-        System.out.println(map.size());
-        map.put(12,"Third");
-        map.put(21,"Second");
-        System.out.println(map.size());
-        map.put(12,"Second");
-        System.out.println(map.size());
-        map.remove(12);
-        System.out.println(map.size());
-        System.out.println("Значение ключа 21 = " + map.get(21));
-        System.out.println("Test MyHashMap completed");
-        System.out.println("___________________________");
+        MyHashMap<Integer, String> map = new MyHashMap<>();
+        map.put(22, "First");
+        System.out.println(map.size);
+        map.put(2, "Second");
+        System.out.println(map.size);
+//        map.put(22,"First2");
+        System.out.println(map.size);
+        map.put(11, "First");
+        System.out.println(map.size);
+
         // __________________________________________________________________
-
-
-
-
-
-
 
 
     }

@@ -7,7 +7,6 @@ import java.io.FileWriter;
 import java.io.IOException;
 
 
-
 public class Main {
     public static void main(String[] args) throws IOException {
         // __________________________________________________________________
@@ -65,30 +64,28 @@ public class Main {
         //MODULE 10
         // __________________________________________________________________
 
-        File file = new File(".\\список номеров телефоном MOD 10\\file.txt");
-        FileTest test = new FileTest(file);
-        test.fileExists();
+//                Задача 1
 
-        try (FileWriter writer = new FileWriter(file)){
+        File file = new File(".\\список номеров телефоном MOD 10\\file.txt");
+        FileTest test = new FileTest();
+        test.fileExists(file);
+
+        try (FileWriter writer = new FileWriter(file)) {
             writer.write("987-123-4567\n" +
                     "123 456 7890\n" +
                     "(123) 456-7890");
             writer.flush();
-        }
-        catch (IOException ex){
+        } catch (IOException ex) {
             System.out.println(ex.getMessage());
         }
 
         NumValidator numValidator = new NumValidator(file);
         numValidator.FilePrinterValidNumbers();
-
-
-
-
-
-
-
-
+//      _________________________________________
+//               Задача 2
+//      _________________________________________
+        File file2 = new File(".\\список объектов User\\file.txt");
+        test.fileExists(file2);
 
 
 

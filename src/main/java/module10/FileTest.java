@@ -4,12 +4,9 @@ import java.io.File;
 import java.io.IOException;
 
 public class FileTest {
-    File file;
-    public FileTest (File file){
-        this.file=file;
-    }
 
-    public void fileExists () {
+
+    public void fileExists (File file) {
         if (!file.exists()) {
             file.getParentFile().mkdirs();
             try {
@@ -19,6 +16,7 @@ public class FileTest {
             }
             System.out.println("Новый файл был создан");
         } else {
+            System.out.println("_______________");
             System.out.println("Файл существует");
             System.out.println("_______________");
             System.out.println();

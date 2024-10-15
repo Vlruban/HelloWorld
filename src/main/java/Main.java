@@ -1,8 +1,8 @@
 import module10.FileTest;
+import module10.GsonMake;
 import module10.NumValidator;
 
 import java.io.File;
-import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 
@@ -78,7 +78,6 @@ public class Main {
         } catch (IOException ex) {
             System.out.println(ex.getMessage());
         }
-
         NumValidator numValidator = new NumValidator(file);
         numValidator.FilePrinterValidNumbers();
 //      _________________________________________
@@ -86,6 +85,19 @@ public class Main {
 //      _________________________________________
         File file2 = new File(".\\список объектов User\\file.txt");
         test.fileExists(file2);
+        try (FileWriter writer = new FileWriter(file2);) {
+            writer.write("name age\n" +
+                    "alice 21\n" +
+                    "ryan 30");
+            writer.flush();
+        } catch (IOException e) {
+            e.getMessage();
+        }
+        GsonMake gsonMake = new GsonMake(file2);
+        gsonMake.gsonPrint();
+//      _________________________________________
+//               Задача 3
+//      _________________________________________
 
 
 

@@ -1,7 +1,5 @@
-package org.example;
+package module9;
 
-import java.sql.Array;
-import java.util.ArrayList;
 import java.util.Arrays;
 
 public class MyArrayList <V>{

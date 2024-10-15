@@ -1,6 +1,6 @@
-package org.example;
+package module9;
 
-class MyHashMap<K, V> {
+public class MyHashMap<K, V> {
     class Node<K, V> {
         K key;
         V value;
@@ -12,8 +12,8 @@ class MyHashMap<K, V> {
     }
 
     Node[] array = new Node[10];
-    int maxSize = 10;
-    int size = 0;
+    private int maxSize = 10;
+    private int size = 0;
 
 
     public void put(K key, V value) {
@@ -44,7 +44,7 @@ class MyHashMap<K, V> {
         array = new Node[10];
     }
 
-    public int size() {
+    public int size () {
         return size;
     }
 

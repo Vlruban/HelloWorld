@@ -1,6 +1,4 @@
-package org.example;
-
-import java.util.LinkedList;
+package module9;
 
 public class MyLinkedList<V> {
    static class Node<V> {

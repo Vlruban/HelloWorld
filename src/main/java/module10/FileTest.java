@@ -6,7 +6,7 @@ import java.io.IOException;
 public class FileTest {
 
 
-    public void fileExists (File file) {
+    public void fileExists(File file) {
         if (!file.exists()) {
             file.getParentFile().mkdirs();
             try {
@@ -14,12 +14,11 @@ public class FileTest {
             } catch (IOException ex) {
                 System.out.println("ex.getMessage() = " + ex.getMessage());
             }
-            System.out.println("Новый файл был создан");
+            System.out.println("Файл (" + file + ") был создан");
         } else {
             System.out.println("_______________");
-            System.out.println("Файл существует");
+            System.out.println("Файл (" + file + " )существует");
             System.out.println("_______________");
-            System.out.println();
         }
     }
 

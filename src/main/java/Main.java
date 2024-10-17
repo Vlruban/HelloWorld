@@ -1,6 +1,7 @@
 import module10.FileTest;
 import module10.GsonMake;
 import module10.NumValidator;
+import module10.WordFrequency;
 
 import java.io.File;
 import java.io.FileWriter;
@@ -78,6 +79,7 @@ public class Main {
         } catch (IOException ex) {
             System.out.println(ex.getMessage());
         }
+
         NumValidator numValidator = new NumValidator(file);
         numValidator.FilePrinterValidNumbers();
 //      _________________________________________
@@ -85,6 +87,7 @@ public class Main {
 //      _________________________________________
         File file2 = new File(".\\список объектов User\\file.txt");
         test.fileExists(file2);
+
         try (FileWriter writer = new FileWriter(file2);) {
             writer.write("name age\n" +
                     "alice 21\n" +
@@ -93,11 +96,31 @@ public class Main {
         } catch (IOException e) {
             e.getMessage();
         }
+
         GsonMake gsonMake = new GsonMake(file2);
         gsonMake.gsonPrint();
 //      _________________________________________
 //               Задача 3
 //      _________________________________________
+        File file3 = new File(".\\список слов\\file.txt");
+        test.fileExists(file3);
+
+        try (FileWriter writer = new FileWriter(file3)){
+            writer.write("the day is sunny the the\n" +
+                    "the sunny is is");
+            writer.flush();
+        }
+        catch (IOException exception){
+            System.out.println(exception.getMessage());
+        }
+
+        WordFrequency wordFrequency = new WordFrequency(file3);
+        wordFrequency.wordsCounter();
+        // __________________________________________________________________
+        //MODULE 11
+        // __________________________________________________________________
+
+
 
 
 

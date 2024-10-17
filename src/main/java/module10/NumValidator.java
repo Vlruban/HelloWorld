@@ -5,7 +5,7 @@ import java.io.FileNotFoundException;
 import java.util.regex.Pattern;
 
 public class NumValidator extends FileReaderTest {
-
+File file;
     public NumValidator(File file){
         super(file);
     }

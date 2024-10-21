@@ -67,7 +67,7 @@ public class Main {
 
 //                Задача 1
 
-        File file = new File(".\\список номеров телефоном MOD 10\\file.txt");
+        File file = new File(".\\telefonsNumMOD 10\\file.txt");
         FileTest test = new FileTest();
         test.fileExists(file);
 
@@ -85,7 +85,7 @@ public class Main {
 //      _________________________________________
 //               Задача 2
 //      _________________________________________
-        File file2 = new File(".\\список объектов User\\file.txt");
+        File file2 = new File(".\\UsersObject\\file.txt");
         test.fileExists(file2);
 
         try (FileWriter writer = new FileWriter(file2);) {
@@ -98,11 +98,11 @@ public class Main {
         }
 
         GsonMake gsonMake = new GsonMake(file2);
-        gsonMake.gsonPrint();
+        gsonMake.toGsonSave();
 //      _________________________________________
 //               Задача 3
 //      _________________________________________
-        File file3 = new File(".\\список слов\\file.txt");
+        File file3 = new File(".\\Words\\file.txt");
         test.fileExists(file3);
 
         try (FileWriter writer = new FileWriter(file3)){
@@ -119,7 +119,6 @@ public class Main {
         // __________________________________________________________________
         //MODULE 11
         // __________________________________________________________________
-
 
 
 

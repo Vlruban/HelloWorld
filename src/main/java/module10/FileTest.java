@@ -12,12 +12,14 @@ public class FileTest {
             try {
                 file.createNewFile();
             } catch (IOException ex) {
+                System.out.println("_______________");
                 System.out.println("ex.getMessage() = " + ex.getMessage());
+                System.out.println("_______________");
             }
-            System.out.println("Файл (" + file + ") был создан");
+            System.out.println("Файл (" + file.getName() + ") был создан");
         } else {
             System.out.println("_______________");
-            System.out.println("Файл (" + file + " )существует");
+            System.out.println("Файл (" + file.getName() + ") существует");
             System.out.println("_______________");
         }
     }

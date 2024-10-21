@@ -43,6 +43,7 @@ public class GsonMake extends FileReaderTest {
         }
         System.out.println(stringBuilder.toString());
         System.out.println("было записано в "+ file1.getName());
+        System.out.println();
     }
 }
 
